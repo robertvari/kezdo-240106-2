@@ -1,6 +1,10 @@
 import time
 
-def coffeemaker(coffee_type, milk=False, sugar=False):
+def coffeemaker(coffee_type: str, milk=False, sugar=False):
+    '''
+    This function makes a good coffee :)
+    '''
+
     print("-"*50)
     print("Coffee maker is started...")
     print(f"Making a {coffee_type} coffee...")
