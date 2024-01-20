@@ -2,6 +2,7 @@ import os, random
 
 MAX_NUMBER = 10
 PLAYER_NAME = None
+CREDITS = 100
 
 def main():
     clear_screen()
@@ -16,11 +17,14 @@ def clear_screen():
 
 def intro():
     print("*"*50, "MAGIC NUMBER GAME", "*"*50)
-    
+
     get_player_name()
 
     # Game rules
-    print(f"Hello {PLAYER_NAME}! I have number between 1 and {MAX_NUMBER}. Can you guess it?")
+    print(f"Hello {PLAYER_NAME}! You have {CREDITS} credits to play.")
+    print("If you can guess my number you win 10 credits, otherwise you loose 10 credits")
+    print("I you have no more credits the game is over.")
+    print(f"I have number between 1 and {MAX_NUMBER}. Can you guess it?")
     print("-"*50)
 
 def get_player_name():
