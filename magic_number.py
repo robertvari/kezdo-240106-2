@@ -34,28 +34,32 @@ def game_loop():
 
     # generate a random number
     magic_number = str(random.randint(1, MAX_NUMBER))
+    print(f"DEBUG: {magic_number}")
+
     player_number = input("What is your guess?")
 
     while magic_number != player_number:
         max_tries -= 1
         if max_tries == 0:
+            clear_screen()
             print("Game Over :(")
             ask_new_game()
         
         print(f"Wrong, try again. You have {max_tries} left.")
         player_number = input("What is my magic number?")
 
+    clear_screen()
     print(f"You win {PLAYER_NAME}! {magic_number} was my number!!!")
     ask_new_game()
 
 def ask_new_game():
-    clear_screen()
     player_input = input("Do you want to play again? (y/n)")
 
     if player_input == "y":
         clear_screen()
         game_loop()
 
+    clear_screen()
     print("Maybe next time :)")
     exit()
 
