@@ -2,7 +2,7 @@ import os, random
 
 MAX_NUMBER = 10
 PLAYER_NAME = None
-CREDITS = 100
+CREDITS = 10
 
 def main():
     clear_screen()
@@ -70,11 +70,11 @@ def ask_new_game():
             clear_screen()
             game_loop()
     else:
+        clear_screen()
         print("You loose all your credits")
-
-    clear_screen()
+    
     print("Maybe next time :)")
     exit()
-    
+
 # start game
 main()
