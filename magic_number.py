@@ -3,7 +3,6 @@ import os, random
 MAX_NUMBER = 10
 PLAYER_NAME = None
 
-# entry point
 def main():
     clear_screen()
     
@@ -50,7 +49,6 @@ def game_loop():
     print(f"You win {PLAYER_NAME}! {magic_number} was my number!!!")
     ask_new_game()
 
-# Ask for the player if he/she wants a new turn.
 def ask_new_game():
     clear_screen()
     player_input = input("Do you want to play again? (y/n)")
