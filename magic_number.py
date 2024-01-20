@@ -12,7 +12,6 @@ def main():
     
     intro()
 
-    # start game loop
     game_loop()
 
 def clear_screen():
