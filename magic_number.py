@@ -50,7 +50,7 @@ def game_loop():
 
             CREDITS -= 10
             print(f"You lose 10 credits. You have {CREDITS} credits left")
-            
+
             ask_new_game()
         
         print(f"Wrong, try again. You have {max_tries} left.")
@@ -64,17 +64,17 @@ def game_loop():
     ask_new_game()
 
 def ask_new_game():
-    player_input = input("Do you want to play again? (y/n)")
-
-    if player_input == "y":
-        clear_screen()
-        game_loop()
+    if CREDITS > 0:
+        player_input = input("Do you want to play again? (y/n)")
+        if player_input == "y":
+            clear_screen()
+            game_loop()
+    else:
+        print("You loose all your credits")
 
     clear_screen()
     print("Maybe next time :)")
     exit()
-
-
-
+    
 # start game
 main()
