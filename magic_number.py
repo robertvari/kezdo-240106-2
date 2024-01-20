@@ -32,6 +32,8 @@ def get_player_name():
     PLAYER_NAME = input("What is your name?")
 
 def game_loop():
+    global CREDITS
+
     max_tries = 3
 
     # generate a random number
@@ -44,7 +46,11 @@ def game_loop():
         max_tries -= 1
         if max_tries == 0:
             clear_screen()
-            print("Game Over :(")
+            print("You have no more tries :(")
+
+            CREDITS -= 10
+            print(f"You lose 10 credits. You have {CREDITS} credits left")
+            
             ask_new_game()
         
         print(f"Wrong, try again. You have {max_tries} left.")
@@ -52,6 +58,9 @@ def game_loop():
 
     clear_screen()
     print(f"You win {PLAYER_NAME}! {magic_number} was my number!!!")
+
+    CREDITS += 10
+    print(f"You get 10 credits. Now you have {CREDITS} credits")
     ask_new_game()
 
 def ask_new_game():
