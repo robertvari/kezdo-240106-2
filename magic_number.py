@@ -1,20 +1,24 @@
 import os
 
+MAX_NUMBER = 10
+
 # entry point
 def main():
-    pass
+    clear_screen()
+    intro()
 
 
-# A clear terminal 
 def clear_screen():
-    pass
+    os.system("cls")
+    # os.system("clear")
 
-# Print game intro
 def intro():
-    pass
+    print("*"*50, "MAGIC NUMBER GAME", "*"*50)
+    
+    # Game rules
+    print(f"I have number between 1 and {MAX_NUMBER}. Can you guess it?")
+    print("-"*50)
 
-
-# Ask for the player name and store it in a global variable
 def get_player_name():
     pass
 
@@ -27,3 +31,8 @@ def game():
 # Ask for the player if he/she wants a new turn.
 def ask_new_game():
     pass
+
+
+
+# start game
+main()
