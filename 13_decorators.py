@@ -13,6 +13,15 @@ def my_timer(func):
     
     return wrapper
 
+
+def temp_warning(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        if result > 800:
+            print(f"<<<WARNING>>> Temperature is high: {result} <<<WARNING>>>")
+        return result
+    return wrapper
+
 @my_timer
 def convert_images():
     print("Convert Images started...")
@@ -26,5 +35,12 @@ def convert_videos():
     print("Convert video finished!")
 
 
-convert_images()
-convert_videos()
+@temp_warning
+def check_temperature():
+    time.sleep(2)
+    current_temp = random.randint(100, 1200)
+    return current_temp
+
+while True:
+    result = check_temperature()
+    print(f"Current temperature: {result}")
