@@ -2,6 +2,7 @@ import os, json
 from my_functions.file_functions import get_all_files
 from PIL import Image
 from PIL.ExifTags import TAGS
+from openpyxl import Workbook
 
 
 def main():
@@ -11,7 +12,9 @@ def main():
     folder_path = get_root_folder()
     image_list = collect_photos(folder_path)
     photo_data = collect_data(image_list)
+    
     save_json(photo_data)
+    save_excel(photo_data)
 
 def get_root_folder():
     # folder_path = input("Where are your photos?")
@@ -59,7 +62,27 @@ def save_json(photo_data):
     print("Photo data saved.")
 
 def save_excel(photo_data):
-    pass
+    wb = Workbook()
+    ws = wb.active
+
+    ws["A1"] = "Path"
+    ws["B1"] = "Width"
+    ws["C1"] = "Height"
+    ws["D1"] = "Date"
+    ws["E1"] = "Model"
+    ws["F1"] = "ISO"
+
+    counter = 3
+    for photo in photo_data:
+        ws[f"A{counter}"] = photo
+        ws[f"B{counter}"] = photo_data[photo]["width"]
+        ws[f"C{counter}"] = photo_data[photo]["height"]
+        ws[f"D{counter}"] = photo_data[photo]["date"]
+        ws[f"E{counter}"] = photo_data[photo]["camera"]
+        ws[f"F{counter}"] = photo_data[photo]["ISO"]
+        counter += 1
+
+    wb.save("photo_data.xlsx")
 
 def clear_screen():
     os.system("cls")  #linux, mac: os.system("clear")
