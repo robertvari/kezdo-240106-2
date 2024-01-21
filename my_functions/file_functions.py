@@ -13,6 +13,9 @@ def get_all_files(root_folder: str, file_list: list):
     # Check folder validity
     assert os.path.exists(root_folder), f"Path does not exist: {root_folder}"
 
+    # Check if root_folder is a folder
+    assert os.path.isdir(root_folder), f"root_folder must be a folder: {root_folder}"
+
     # check is file_ist is a list
     assert isinstance(file_list, list), "file_list must be of type list"
 
@@ -24,9 +27,9 @@ def get_all_files(root_folder: str, file_list: list):
     for i in root_folder_content:
         full_path = os.path.join(root_folder, i)
         if os.path.isfile(full_path):
-            file_list.append(i)
+            file_list.append(full_path)
         else:
-            subfolders.append(i)
+            subfolders.append(full_path)
 
     for folder in subfolders:
         get_all_files(folder, file_list)
