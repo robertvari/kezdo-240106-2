@@ -1,10 +1,11 @@
 import os
 
-def get_all_files(root_folder: str, file_list: list):
+def get_all_files(root_folder: str, file_list: list, extension: str=None):
     """
     Find all files in the root_folder and all its subfolders.
     root_folder: (str) The folder to start the search
     file_list: (list) An empty list to collect files
+    extension: (str) Optional file extension filter
     """
 
     # check root_folder type
@@ -27,7 +28,13 @@ def get_all_files(root_folder: str, file_list: list):
     for i in root_folder_content:
         full_path = os.path.join(root_folder, i)
         if os.path.isfile(full_path):
-            file_list.append(full_path)
+            if extension:
+                # summer_photo.jpg = summer_photo .jpg
+                name, ext = os.path.splitext(i)
+                if extension.lower() == ext.lower():
+                    file_list.append(full_path)
+            else:
+                file_list.append(full_path)
         else:
             subfolders.append(full_path)
 
