@@ -39,4 +39,4 @@ def get_all_files(root_folder: str, file_list: list, extension: str=None):
             subfolders.append(full_path)
 
     for folder in subfolders:
-        get_all_files(folder, file_list)
+        get_all_files(folder, file_list, extension)
