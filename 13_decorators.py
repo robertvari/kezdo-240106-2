@@ -13,12 +13,13 @@ def my_timer(func):
     
     return wrapper
 
-
+@my_timer
 def convert_images():
     print("Convert Images started...")
     time.sleep(random.randint(1, 10))
     print("Convert Images finished!")
 
+@my_timer
 def convert_videos():
     print("Convert video started...")
     time.sleep(random.randint(1, 10))
